@@ -3,11 +3,8 @@ Smart Police Interface is an application that lets you create and manage format 
 Internet-of-Things devices. 
 
 
-##Todo
 
-
-
-
+# Currently  this repository is set to private for the time being. The following guide is not applicable for now. 
 
 ## Requirements
 The main requirement needed to install this program is to have go installed. 
@@ -59,7 +56,7 @@ export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 ## Installation
 
 ```bash
-go get -u https://github.com/matsse/SmartPolice-Interface 
+go get -u github.com/matsse/SmartPolice-Interface 
 ```
 
 

@@ -5,18 +5,6 @@ Internet-of-Things devices.
 
 ##Todo
 
--[ ] Core features
-    -[x] Reading data in JSON 
-    -[x] JSON files for persistent device storage
--[x] Format
-    -[x] Index data with key/value pair 
-    -[x] Support for basic primitives
--[x] Connectivity to a cloud API
-    -[ ] API Integration 
-        -[x] The Things Network 
-        -[ ] dweet.io  
-        -[ ] ThingSpeak         
-
 
 
 

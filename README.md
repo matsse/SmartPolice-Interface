@@ -12,6 +12,10 @@ Internet-of-Things devices.
 ## Requirements
 The main requirement needed to install this program is to have go installed. 
 
+But other installed packages that you have to install are: 
+- wget
+- git
+
 1. On Ubuntu and Debian golang can be installed with the following command. 
 
 ```bash

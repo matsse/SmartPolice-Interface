@@ -1,0 +1,46 @@
+{
+  "layer1" : {
+    "temperature" : 32,
+    "humidity" :  52
+  },
+  "message feed" : {
+    "Lori" : {
+      "Tuesday" : {
+        "message 1" :  "Not the right message"
+      }
+    },
+    "Tom" : {
+      "Monday" : {
+        "message 1" :  "Try again"
+      },
+      "Tuesday" : {
+        "message 2" :  "No"
+      },
+      "Friday" : {
+        "message 3" :  "Try something else",
+        "unnamed folder" : {
+          "assorted messages" : {
+            "messages" : [ "Messages", "in",  "an", "array", "!"]
+          }
+        }
+      },
+      "Saturday" : {
+        "message" :  "This is a test string"
+      }
+    }
+  },
+
+  "Coordinates" : {
+    "new folder" : {
+       "continue" : {
+         "getting closer" : {
+           "Warmer" : {
+              "warmer" : {
+                "latitude" : 83.23193939
+              }
+           }
+         }
+       }
+    }
+  }
+}

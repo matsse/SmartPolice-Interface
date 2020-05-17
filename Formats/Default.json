@@ -1,0 +1,12 @@
+{
+
+  "ArduinoTemp" : {
+    "Temperature" : "path:temperature/type:int",
+    "Humidity" : "path:humidity/type:int"
+  },
+  "GH-Hue" : {
+    "Red" : "path:red/type:int",
+    "Green" : "path:green/type:int",
+    "Blue" : "path:blue/type:int"
+  }
+}

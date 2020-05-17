@@ -1,0 +1,15 @@
+{
+  "temperature" : 32,
+  "humidity" :  52,
+  "pressure" :  749.2997232,
+  "cpu_temp" : 78,
+  "dew point" : 33.2,
+  "ldr" :   76,
+  "message" :  "This is a test string",
+  "latitude" : 83.23193939,
+  "longitude" : 9.46328299,
+  "colors" : [21, 89, 23, 255],
+  "messages" : [ "Messages", "in",  "an", "array", "!"],
+  "quote"    : "Every normal man must be tempted at times, to spit upon his hands, hoist the black, and begin slitting throats.",
+  "points"  : [33, 24, 25, 24, 27, 22, 0, 33]
+}

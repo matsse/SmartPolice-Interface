@@ -31,7 +31,7 @@ func TestTypes(t *testing.T) {
 		"value9" :          "key:value9/type:byte",
 		
 		
-		// All variables that is missing
+		// All variables that are missing
 		"value10" :         "key:value10/type:int8",
 		"value11" :         "key:missing2/type:float32",
 		"value12" :         "key:desire/type:[]int",
@@ -87,7 +87,7 @@ func TestPrimitives(t *testing.T) {
 		"Messages" :        "key:messages/type:[]string",
 		
 		
-		// All variables that is missing
+		// All variables that are missing
 		
 		"Missing" :         "key:missing/type:string",
 		"Missing2" :        "key:missing2/type:float32",
@@ -144,7 +144,7 @@ func TestPaths(t *testing.T) {
 		"Messages" :        "path:message feed.Tom.Friday.unnamed folder.assorted messages.messages/type:[]string",
 		
 		
-		// All variables that is missing
+		// All variables that are missing
 		
 		"Missing" :         "key:missing/type:string",
 		"Scarlet" :        "key:scarlet/type:[]string",

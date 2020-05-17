@@ -56,7 +56,7 @@ export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 ## Installation
 
 ```bash
-go get -u https://github.com/matsse/SmartPolice-Interface 
+go get -u github.com/matsse/SmartPolice-Interface 
 ```
 
 

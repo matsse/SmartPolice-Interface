@@ -16,8 +16,8 @@ func TestConversion(t *testing.T) {
 		// All variables that should be found
 		"Temperature" :             "key:temperature/type:int",
 		"Temperature.Action" :      "action:convert2float64",
-		"Pressure" :             "key:pressure/type:float64",
-		"Pressure.Action" :      "action:convert2int",
+		"Pressure" :                "key:pressure/type:float64",
+		"Pressure.Action" :         "action:convert2int",
 		// All variables that are missing
 		
 	}

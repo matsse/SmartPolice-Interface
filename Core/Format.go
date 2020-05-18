@@ -119,29 +119,29 @@ Target#`)
 
 
 
-func AnalyzeFormat(entry string, data map[string]interface{}) bool  {
+func AnalyzeFormat(entry string, data map[string]interface{}) (interface{},  bool)  {
 	format  := strings.Split(entry, "/")
 	
 	query := strings.Split(format[0], ":")
 	
 	if query[0] == "key" {
-		if _, result := KeySearch(query[1], data); result == true {
-			return true
+		if value, result := KeySearch(query[1], data); result == true {
+			return value, true
 		}
 	} else if query[0] == "path" {
 		
-		if _, result := PathSearch(query[1], data); result == true {
-			return true
+		if value, result := PathSearch(query[1], data); result == true {
+			return value, true
 		}
 	}
 	
-	return false
+	return nil, false
 	
 }
 
 
 
-func AnalyzeType(entry string, data map[string]interface{}) bool  {
+func AnalyzeType(entry string, data map[string]interface{})( string , bool)  {
 	
 	format  := strings.Split(entry, "/")
 	
@@ -154,13 +154,13 @@ func AnalyzeType(entry string, data map[string]interface{}) bool  {
 		if value, result := KeySearch(query[1], data); result == true {
 			temp = value
 		} else {
-			return false
+			return "", false
 		}
 	} else if query[0] == "path" {
 		if value, result := PathSearch(query[1], data); result == true {
 			temp = value
 		} else {
-			return false
+			return "", false
 		}
 	}
 	
@@ -170,40 +170,45 @@ func AnalyzeType(entry string, data map[string]interface{}) bool  {
 	
 	switch dataType[1] {
 	case "string":
-		return String_Validation(temp)
+		return dataType[1],  String_Validation(temp)
 		break
 	case "int":
-		return Integer_validation(temp)
+		return dataType[1], Integer_validation(temp)
 		break
 	case "int8":
 		//fmt.Println(int8(temp.(float64)))
-		return Integer8_validation(temp)
+		return dataType[1], Integer8_validation(temp)
 		break
 	case "int16":
-		return Integer16_validation(temp)
+		return dataType[1], Integer16_validation(temp)
 		break
 	case "int32":
-		return Integer32_validation(temp)
+		return dataType[1], Integer32_validation(temp)
 		break
 	case "int64":
-		return Integer64_validation(temp)
+		return dataType[1], Integer64_validation(temp)
 		break
 	case "float32":
-		return Float32_validation(temp)
+		return dataType[1], Float32_validation(temp)
 		break
 	case "float64":
-		return Float64_validation(temp)
+		return dataType[1], Float64_validation(temp)
 		break
 	case "byte":
-		return Byte_Validation(temp)
+		return dataType[1], Byte_Validation(temp)
 		break
 		
 	}
 	
 	
-	return false
+	return "", false
 
 }
+
+
+//func AnalyzeAction(formats string , data map[string]interface{}) (interface{}, bool) {
+//	//format  := strings.Split(entry, "/")
+//}
 
 
 

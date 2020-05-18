@@ -56,7 +56,7 @@ func TestTypes(t *testing.T) {
 	
 	
 	for queries := range x {
-		if analyFormat := Core.AnalyzeType( x[queries].(string), testJson); analyFormat == true {
+		if _, analyFormat := Core.AnalyzeType( x[queries].(string), testJson); analyFormat == true {
 			result[queries] = "True"
 		} else {
 		
@@ -118,7 +118,7 @@ func TestPrimitives(t *testing.T) {
 	
 	
 	for queries := range x {
-		if analyFormat := Core.AnalyzeFormat( x[queries].(string), testJson); analyFormat == true {
+		if _, analyFormat := Core.AnalyzeFormat( x[queries].(string), testJson); analyFormat == true {
 			result[queries] = "found"
 		}
 	}
@@ -174,7 +174,7 @@ func TestPaths(t *testing.T) {
 	
 	
 	for queries := range x {
-		if analyFormat := Core.AnalyzeFormat( x[queries].(string), testJson); analyFormat == true {
+		if _, analyFormat := Core.AnalyzeFormat( x[queries].(string), testJson); analyFormat == true {
 			result[queries] = "found"
 		}
 	}

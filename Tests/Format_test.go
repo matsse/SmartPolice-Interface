@@ -128,6 +128,9 @@ func TestPrimitives(t *testing.T) {
 	
 }
 
+func TestZigbee(t *testing.T) {
+
+}
 
 
 func TestPaths(t *testing.T) {

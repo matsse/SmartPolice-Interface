@@ -72,6 +72,19 @@ func ReadAction(method string, value interface{}, typ string, ) (interface{}, er
 				return x, nil
 			}
 			break
+	
+	
+		case "save":
+			if  err := Actions.SaveToFile(value, "Generic"); err != nil {
+				
+				return nil, err
+				
+				
+			} else {
+				fmt.Println("File Written!")
+				return value, nil
+			}
+			break
 			
 	}
 	return nil, nil

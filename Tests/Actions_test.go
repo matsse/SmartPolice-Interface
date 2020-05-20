@@ -104,8 +104,6 @@ func TestChain(t *testing.T) {
 		
 	}
 	
-	
-	
 	var testJson map[string] interface{} = map[string] interface{}{}
 	
 	//var result map[string] interface{} = map[string] interface{}{}

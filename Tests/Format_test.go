@@ -193,7 +193,7 @@ func TestArrays(t *testing.T) {
 		
 		// All variables that should be found
 		"Temperature" :             "key:temperature/type:float64",
-		"Temperature.Action" :      "chain:convert2int.sum.times",
+		"Temperature.Action" :      "chain:convert2int.sum.times.save",
 		// All variables that are missing
 		
 	}

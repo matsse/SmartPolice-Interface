@@ -1,4 +1,4 @@
-package Core
+package Utils
 
 import (
 	"reflect"
@@ -34,7 +34,6 @@ func Integer16_validation(value interface{}) bool {
 	if value.(float64) != 0.0 && int16(value.(float64)) == 0 {
 		return false
 	}
-	
 	tmp := int16(value.(float64))
 	myType := reflect.TypeOf(tmp)
 	if k := myType.Kind(); k == reflect.Int16 {

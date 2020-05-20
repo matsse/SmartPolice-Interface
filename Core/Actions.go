@@ -3,12 +3,25 @@ package Core
 import (
 	"SmartPolice-Interface/Core/Actions"
 	"fmt"
+	"strings"
 )
 
 // Curated recipes  for handling data after acquisition
 
 
-
+func ReadChain(method string, value interface{}, typ string, ) (interface{}, error) {
+	splitter := strings.Split(method, ".")
+	var x interface{} = value
+	var err error
+	for i := range splitter {
+		fmt.Println(splitter[i])
+		x, err  = ReadAction(splitter[i], x, typ)
+		if err != nil {
+			return nil, err
+		}
+	}
+	return x, nil
+}
 
 
 // Reads an input action command and dispatches the correct method
@@ -36,6 +49,30 @@ func ReadAction(method string, value interface{}, typ string, ) (interface{}, er
 				
 			}
 			break
+		case "sum":
+				if x, err := Actions.Sum(value); err != nil {
+					fmt.Println("x", x)
+					return x, err
+					
+					
+				} else {
+					
+					return x, nil
+				}
+			break
+	
+		case "times":
+			if x, err := Actions.Times(value); err != nil {
+				fmt.Println("x", x)
+				return x, err
+				
+				
+			} else {
+				
+				return x, nil
+			}
+			break
+			
 	}
 	return nil, nil
 }

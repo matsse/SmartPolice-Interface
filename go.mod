@@ -11,4 +11,5 @@ require (
 	github.com/mattn/go-runewidth v0.0.9 // indirect
 	github.com/nsf/termbox-go v0.0.0-20200418040025-38ba6e5628f1 // indirect
 	github.com/pwaller/keyboard v0.0.0-20121011105959-f32bd761b121 // indirect
+	google.golang.org/genproto v0.0.0-20200323114720-3f67cca34472
 )

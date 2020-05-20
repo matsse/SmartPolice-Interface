@@ -1,6 +1,7 @@
 package Core
 
 import (
+	"SmartPolice-Interface/Core/Utils"
 	json2 "encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -170,32 +171,32 @@ func AnalyzeType(entry string, data map[string]interface{})( string , bool)  {
 	
 	switch dataType[1] {
 	case "string":
-		return dataType[1],  String_Validation(temp)
+		return dataType[1],  Utils.String_Validation(temp)
 		break
 	case "int":
-		return dataType[1], Integer_validation(temp)
+		return dataType[1], Utils.Integer_validation(temp)
 		break
 	case "int8":
 		//fmt.Println(int8(temp.(float64)))
-		return dataType[1], Integer8_validation(temp)
+		return dataType[1], Utils.Integer8_validation(temp)
 		break
 	case "int16":
-		return dataType[1], Integer16_validation(temp)
+		return dataType[1], Utils.Integer16_validation(temp)
 		break
 	case "int32":
-		return dataType[1], Integer32_validation(temp)
+		return dataType[1], Utils.Integer32_validation(temp)
 		break
 	case "int64":
-		return dataType[1], Integer64_validation(temp)
+		return dataType[1], Utils.Integer64_validation(temp)
 		break
 	case "float32":
-		return dataType[1], Float32_validation(temp)
+		return dataType[1], Utils.Float32_validation(temp)
 		break
 	case "float64":
-		return dataType[1], Float64_validation(temp)
+		return dataType[1], Utils.Float64_validation(temp)
 		break
 	case "byte":
-		return dataType[1], Byte_Validation(temp)
+		return dataType[1], Utils.Byte_Validation(temp)
 		break
 		
 	}

@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"strings"
 	"testing"
 )
 
@@ -184,3 +185,52 @@ func TestPaths(t *testing.T) {
 }
 
 
+
+func TestArrays(t *testing.T) {
+	
+	
+	var x  = map[string] interface{}{
+		
+		// All variables that should be found
+		"Temperature" :             "key:temperature/type:float64",
+		"Temperature.Action" :      "chain:convert2int.sum.times",
+		// All variables that are missing
+		
+	}
+	
+	
+	
+	var testJson map[string] interface{} = map[string] interface{}{}
+	
+	//var result map[string] interface{} = map[string] interface{}{}
+	
+	file, err :=  os.Open("./files/Primitives.json")
+	if err != nil {
+		panic(err)
+	}
+	
+	
+	bytes, _ := ioutil.ReadAll(file)
+	json.Unmarshal(bytes, &testJson)
+	
+	
+	value, returnf := Core.AnalyzeFormat( x["Temperature"].(string), testJson);
+	if returnf == false {
+		fmt.Println("Could not find key in file!")
+	}
+	
+	dtype, returnf := Core.AnalyzeType( x["Temperature"].(string), testJson);
+	if returnf == false {
+		fmt.Println("Could not find key in file!")
+	}
+	
+	action := strings.Split(x["Temperature.Action"].(string), ":")
+	result, actErr := Core.ReadChain(action[1], value, dtype)
+	if actErr != nil {
+		panic(actErr)
+	}
+	
+	fmt.Println(result)
+	
+	
+}

@@ -1,33 +1,58 @@
 package Actions
 
-
-
-
+import (
+	"go/types"
+)
 
 // Implementing a map of
 
 var Convert2float64 map[string]  func( in interface{}, typ string) (float64, error) =  map[string] func(in interface{}, typ string) (float64, error) {
 	"int" : func(in interface{}, typ string) (float64, error) {
-		out := float64(in.(float64))
-		return out, nil
+		return float64(int(in.(float64))), nil
 	},
 	"int8" : func(in interface{}, typ string) (float64, error) {
-		out := float64(in.(int8))
+		out := float64(int8(in.(float64)))
 		return out, nil
 	},
 	"int16" : func(in interface{}, typ string) (float64, error) {
-		out := float64(in.(int16))
+		out := float64(int16(in.(float64)))
 		return out, nil
 	},
 	"int32" : func(in interface{}, typ string) (float64, error) {
-		out := float64(in.(int32))
+		out := float64(int32(in.(float64)))
 		return out, nil
 	},
 	"int64" : func(in interface{}, typ string) (float64, error) {
-		out := float64(in.(int64))
+		out := float64(int64(in.(float64)))
 		return out, nil
 	},
 	"float32" : func(in interface{}, typ string) (float64, error) {
+		out := float64(in.(float32))
+		return out, nil
+	},
+	
+	// When converted types must be reconverted
+	"sint" : func(in interface{}, typ string) (float64, error) {
+		out := float64(in.(int))
+		return out, nil
+	},
+	"sint8" : func(in interface{}, typ string) (float64, error) {
+		out := float64(int8(in.(float64)))
+		return out, nil
+	},
+	"sint16" : func(in interface{}, typ string) (float64, error) {
+		out := float64(int16(in.(float64)))
+		return out, nil
+	},
+	"sint32" : func(in interface{}, typ string) (float64, error) {
+		out := float64(int32(in.(float64)))
+		return out, nil
+	},
+	"sint64" : func(in interface{}, typ string) (float64, error) {
+		out := float64(int64(in.(float64)))
+		return out, nil
+	},
+	"sfloat32" : func(in interface{}, typ string) (float64, error) {
 		out := float64(in.(float32))
 		return out, nil
 	},
@@ -61,6 +86,8 @@ var Convert2int map[string]  func( in interface{}, typ string) (int , error) =  
 		out := int(in.(float64))
 		return out, nil
 	},
+	
+	
 }
 
 
@@ -72,6 +99,15 @@ var Convert2bytes map[string]  func( in interface{}, typ string) ([]byte , error
 		return out, nil
 	},
 }
+
+var GetType map[string]  func() (types.Type , error) =  map[string] func() (types.Type , error) {
+	"int" : func() (types.Type, error) {
+		
+		return types.Universe.Lookup("string").Type(), nil
+	},
+}
+
+
 
 
 

@@ -2,6 +2,7 @@ package Tests
 
 import (
 	"SmartPolice-Interface/Core/Actions"
+	"SmartPolice-Interface/Core/Utils"
 	"strings"
 	"testing"
 	"SmartPolice-Interface/Core"
@@ -140,6 +141,42 @@ func TestChain(t *testing.T) {
 	
 	
 }
+
+
+
+
+func TestHCTypes(t *testing.T) {
+	fmt.Printf("\n\n\nHardcoded type testing\n")
+	
+	
+	var x  = map[string] interface{}{
+		"Temperature" :             "key:temperature/type:int",
+		"Temperature.Action" :      "action:sumx(self#,sint#32)",
+	}
+	
+	
+
+	varInfo := strings.Split(x["Temperature"].(string), "/")
+	
+	variable := 43
+	identifier := strings.Split(varInfo[0], ":")[1]
+	varType := strings.Split(varInfo[1], ":")[1]
+	
+	fmt.Println(variable, identifier, varType)
+	
+	ActInfo := strings.Split(x["Temperature.Action"].(string), ":")
+	
+	
+	
+	
+	_ = Utils.AnalyzeAction(ActInfo[1], variable, varType)
+	
+	
+	
+}
+
+
+
 
 
 

@@ -22,3 +22,17 @@ func Times(in interface{}) (int, error){
 	
 	return in.(int)*3, nil
 }
+
+
+
+
+func Sumx(in1 interface{}, in2 interface{} ) (int) {
+	if _, ok := in1.(int);  ok != true    {
+		panic("arg1 is not an integer")
+	}
+	if _, ok := in2.(int);  ok != true    {
+		panic("arg2 is not an integer")
+	}
+	
+	return in1.(int) + in2.(int)
+}

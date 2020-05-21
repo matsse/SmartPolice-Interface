@@ -150,7 +150,7 @@ func TestHCTypes(t *testing.T) {
 	
 	
 	var x  = map[string] interface{}{
-		"Temperature" :             "key:temperature/type:int",
+		"Temperature" :             "key:temperature/type:float64",
 		"Temperature.Action" :      "action:sumx(self#,sint#32)",
 	}
 	
@@ -158,9 +158,9 @@ func TestHCTypes(t *testing.T) {
 
 	varInfo := strings.Split(x["Temperature"].(string), "/")
 	
-	variable := 43
-	identifier := strings.Split(varInfo[0], ":")[1]
-	varType := strings.Split(varInfo[1], ":")[1]
+	identifier := strings.Split(varInfo[0], ":")[1]                 // Get test identifier key
+	varType := strings.Split(varInfo[1], ":")[1]                    // Get test data type
+	variable, _ := Actions.Convert2int[varType](343.3, varType)     // convert a float64 to int
 	
 	fmt.Println(variable, identifier, varType)
 	

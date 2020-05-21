@@ -7,12 +7,12 @@ import (
 
 // !!NOT IN USE YET!! Alpha code of declaring inline arguments for Actions
 
-const (
-	HCSelf      = "self:"
-	HCRef       = "sref:"            // Declaration of a value from another data entry (name of entry is reference)
-	HCString    = "sstring:"
-	HCInt       = "sint:"
-	HCFloat     = "sfloat64:"
+const  (
+	HCSelf   string   = "self"
+	HCRef    string   = "sref"            // Declaration of a value from another data entry (name of entry is reference)
+	HCString string   = "sstring"
+	HCInt    string   = "sint"
+	HCFloat  string   = "sfloat64"
 	
 )
 
@@ -48,16 +48,17 @@ func AnalyzeAction(method string, in interface{}, typ string) interface{}{
 	var temp  []interface{}
 	for i := range functions {
 		arg := strings.Split(functions[i], "#")
-		if arg[0] == "self" {
+		if arg[0] == HCSelf {
 			temp = append(temp, in)
+			continue
+		} else if arg[0] == HCRef {
+			// Get Ref
 			continue
 		}
 	
 		
 		x, _ := QuickConvert[arg[0]](arg[1], "string")
 		temp = append(temp, x)
-		
-		
 	}
 
 	output, err := FindFunction[len(temp)](temp, functionName)

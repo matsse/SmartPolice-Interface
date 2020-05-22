@@ -207,9 +207,7 @@ func AnalyzeType(entry string, data map[string]interface{})( string , bool)  {
 }
 
 
-//func AnalyzeAction(formats string , data map[string]interface{}) (interface{}, bool) {
-//	//format  := strings.Split(entry, "/")
-//}
+
 
 
 

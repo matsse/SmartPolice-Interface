@@ -86,22 +86,6 @@ Device-Type# `)
 		
 	}
 	
-	
-	
-	
-	//if (D.DeviceType == "TTN") {
-	//	// Sets the source of the
-	//	D.Source = Provider{}
-	//	x := Providers.TTN_Info{}
-	//	x.NewDevice()
-	//	fmt.Println(x)
-	//	D.Source.TTN = x
-	//	fmt.Println(D.Source.TTN)
-	//
-	//}
-	
-	
-	
 	Devices = append(Devices, *D)
 	
 	
@@ -153,8 +137,6 @@ func (D *Device) SaveDevice() {
 
 func (D *Device) Startup() {
 	
-	
-	
 	if D.DeviceType == "TTN" {
 		
 			
@@ -165,12 +147,7 @@ func (D *Device) Startup() {
 	} else {
 		fmt.Println("ERROR")
 	}
-	//
-	//fmt.Println(D.Format)
-	//
-	//for f := range D.Format {
-	//	fmt.Println(D.Format[f])
-	//}
+
 
 
 }

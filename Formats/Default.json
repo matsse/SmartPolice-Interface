@@ -1,8 +1,14 @@
 {
 
   "ArduinoTemp" : {
-    "Temperature" : "path:temperature/type:int",
-    "Humidity" : "path:humidity/type:int"
+    "Target": {
+      "Temperature" : "path:temperature/type:int",
+      "Humidity" : "path:humidity/type:int"
+    },
+    "Actions" : {
+
+    }
+
   },
   "GH-Hue" : {
     "Red" : "path:red/type:int",

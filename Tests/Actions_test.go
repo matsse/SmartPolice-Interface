@@ -175,7 +175,50 @@ func TestHCTypes(t *testing.T) {
 	
 }
 
-
+func Test4Input(t *testing.T) {
+	fmt.Printf("\n\n\nDecryption Testing\n")
+	
+	//var x  = map[string] interface{}{
+	//	"Temperature" :             "key:temperature/type:float64",
+	//	"Temperature.Action" :      "action:DecryptAES(self#,ref#)",
+	//	"key" : "12345678901234567890123456789012",
+	//	"iv" : "1234567890123456",
+	//	"blocksize" : 128,
+	//}
+	
+	Utils.GlobalTemp = map[string] interface{}{
+		"Temperature" :             "key:temperature/type:string",
+		"Temperature.Action" :      "action:DecryptAES(self#,sref#key,sref#iv,sref#blocksize)",
+		
+		"Globals" : map[string]  interface{} {
+			// Global variables to use for encryption
+			"key" : "12345678901234567890123456789012",
+			"iv" : "1234567890123456",
+			"blocksize" : 128,
+		},
+	}
+	
+	input := Actions.EncryptAES(`{
+  "layer1" : {
+    "temperature" : 32,
+    "humidity" :  52
+  },
+}`, "12345678901234567890123456789012", "1234567890123456", 128)
+	
+	
+	varInfo := strings.Split(Utils.GlobalTemp["Temperature"].(string), "/")
+	_ = strings.Split(varInfo[0], ":")[1]                 // Get test identifier key
+	varType := strings.Split(varInfo[1], ":")[1]                    // Get test data type
+	//variable, _ := Actions.Convert2int[varType](343.3, varType)     // convert a float64 to int
+	
+	ActInfo := strings.Split(Utils.GlobalTemp["Temperature.Action"].(string), ":")
+	
+	
+	
+	_ = Utils.AnalyzeAction(ActInfo[1], input, varType)
+	
+	
+}
 
 
 

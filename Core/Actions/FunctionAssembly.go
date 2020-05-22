@@ -1,6 +1,9 @@
 package Actions
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+)
 
 type ApplicationFunc struct {
 	Name            string
@@ -27,11 +30,29 @@ var AvailableFunctions  map[string]ApplicationFunc =  map[string]ApplicationFunc
 		Description: "Store file in the data folder",
 	},
 	
+	
+	// 4 argument functions!
+	"DecryptAES": {
+		Name: "DecryptAES",
+		Args: []string{"sstring", "sstring", "sstring", "sint"},
+		Description: "Encrypt string to ciphertext with AES",
+	},
+	
 }
 
 
-func  (A ApplicationFunc) CheckTypes(data interface{}, index int) {
 
+
+func  (A ApplicationFunc) CheckTypes(data interface{}, index int) {
+	fmt.Println(reflect.TypeOf(data), index)
+	fmt.Println(A.Name, A.Args[index])
+	
+	if fmt.Sprintf("s%v", reflect.TypeOf(data)) ==  A.Args[index] {
+	
+	} else {
+		panic("Not same!")
+	}
+	
 }
 
 
@@ -78,7 +99,9 @@ func (A ApplicationFunc) Run3Args(data interface{}, data2 interface{}, data3 int
 func (A ApplicationFunc) Run4Args(data interface{}, data2 interface{}, data3 interface{}, data4 interface{}) (interface{}, error) {
 	
 	switch A.Name {
-	
+	case "DecryptAES":
+		return DecryptAES(data, data2, data3, data4), nil
+		
 	default:
 
 	}

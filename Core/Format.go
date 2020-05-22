@@ -14,6 +14,8 @@ import (
 
 
 
+
+
 var Formats map[string] interface{}
 
 type Format  map[string] interface{}
@@ -47,8 +49,6 @@ func LoadFormats() {
 	
 	
 	fmt.Println(Formats)
-	
-	
 	
 }
 

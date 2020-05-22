@@ -1,9 +1,11 @@
 package Utils
 
 import (
+	"SmartPolice-Interface/Core/Actions"
 	"fmt"
 	"strings"
 )
+var GlobalTemp map[string] interface{}
 
 // !!NOT IN USE YET!! Alpha code of declaring inline arguments for Actions
 
@@ -52,11 +54,15 @@ func AnalyzeAction(method string, in interface{}, typ string) interface{}{
 			temp = append(temp, in)
 			continue
 		} else if arg[0] == HCRef {
-			// Get Ref
+			// Get Reference from temporary global repository G
+			variable := GlobalTemp["Globals"].(map[string]interface{})[arg[1]]
+			Actions.AvailableFunctions[functionName].CheckTypes(variable, i)
+			//fmt.Println("xxxx" , arg[1])
+			temp = append(temp, variable)
+			
 			continue
 		}
 	
-		
 		x, _ := QuickConvert[arg[0]](arg[1], "string")
 		temp = append(temp, x)
 	}

@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"crypto/aes"
 	"crypto/cipher"
-	"encoding/hex"
 )
 
 func EncryptAES(input, key, iv string, blockSize int ) string {
@@ -16,9 +15,7 @@ func EncryptAES(input, key, iv string, blockSize int ) string {
 	
 	mode := cipher.NewCBCEncrypter(block, bIV)
 	mode.CryptBlocks(output, bInput)
-	//fmt.Println("Output", len(output))
 	return string(output)
-	//return hex.EncodeToString(output)
 }
 
 
@@ -30,18 +27,15 @@ func DecryptAES(input, key, iv interface{}, blockSize interface{} ) string {
 	
 	block, _ := aes.NewCipher(bKey)
 	if len(text) < aes.BlockSize {
-		panic( "ciphertext too short")
+		panic( "Ciphertext too short")
 	}
 	
 	decrypted := make([]byte, len(text))
 	mode := cipher.NewCBCDecrypter(block, bIV)
 	mode.CryptBlocks(decrypted, text)
 	
-	//fmt.Println(string(PKCS5UnPadding(decrypted)))
 	
-	
-	
-	return hex.EncodeToString(decrypted)
+	return string(PKCS5UnPadding(decrypted))
 }
 
 

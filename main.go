@@ -2,6 +2,7 @@ package main
 
 import (
 	"SmartPolice-Interface/Core"
+	"SmartPolice-Interface/Core/Utils"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -11,6 +12,7 @@ import (
 
 func init() {
 	fmt.Println("Checking for exisiting devices...")
+	
 	LoadDevices()
 	StartupDevices()
 	Core.LoadFormats()
@@ -35,26 +37,10 @@ func main() {
 	
 	var option string = ""
 	
-	fmt.Printf(`
-	Welcome to the smart policing interface for data aqcuisition from IoT devices.
-	This program lets you define custom formats to extract useful information from smart
-	devices and control what gets prioritized.
-
-	Disclaimer: this is a Work in progress, so some issues might arise from using its features!
-
-	Please select one of the options:
-
-	device)    Enters the device management interface
-	format)    Enters the format management interface
-	listen)    Listen for the data that is gathered
-	options)   Adjust settings
-	exit)      Exit the program
-
-`)
+	fmt.Println(Utils.MainHome)
 
 prompt: {
-	fmt.Printf(`
-Root# `)
+	fmt.Printf(Utils.MainPS)
 		
 		fmt.Scanf("%s\n", &option)
 	
@@ -93,21 +79,14 @@ func DeviceScreen() {
 	
 	var tmpDevice Core.Device = Core.Device{}
 	
-	fmt.Printf(`
-	This interface lets you manage your devices. All devices are stored in json format for future use.
-
-	Please select one of the options:
-	new)       Create a new device - A prompt will ask for more info.
-	edit)      Edits an existing device - Example: edit device1
-	delete)    Deletes a device - Example: delete device1
-	dat)       dump current data from all devices
-	list)      List all devices
-	exit)      goes back to precious prompt
-`)
+	fmt.Println(Utils.DeviceHome)
 	
 	devPrompt:{
-		fmt.Printf(`
-Devices# `)
+	fmt.Printf(Utils.DevicePS)
+	
+	
+	
+	
 	fmt.Scanf("%s %v\n", &devOption, &devArg1 )
 	
 	switch devOption {
@@ -147,12 +126,6 @@ goto devPrompt
 
 
 
-
-
-func Listen() {
-
-}
-
 func OptionScreen() {
 
 }
@@ -177,8 +150,8 @@ func Select(name string) *Core.Device {
 
 func LoadDevices() {
 	var files []string
-	path := "./Devices/"
-	
+	//path := "./Devices/"
+	path := "./Data/Devices/"
 	err := filepath.Walk(path, func(path string, info os.FileInfo, err error) error {
 		files = append(files, path)
 		return nil
@@ -205,15 +178,17 @@ func LoadDevices() {
 		bytes, _ := ioutil.ReadAll(file)
 		
 		
-		
-		
 		json.Unmarshal(bytes, &temp)
 		
-		switch temp.DeviceType {
-		case "TTN":
+		//switch temp.DeviceType {
+		//case "TTN":
+		//	temp.Source.TTN.LoadDevices()
+		//	break
+		//
+		//}
+		
+		if temp.DeviceType == "TTN" {
 			temp.Source.TTN.LoadDevices()
-			break
-			
 		}
 		
 		Core.Devices = append(Core.Devices, temp)

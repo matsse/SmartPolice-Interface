@@ -6,7 +6,8 @@
       "Humidity" : "path:humidity/type:int"
     },
     "Actions" : {
-
+      "Temperature.Action" : "action:",
+      "Humidity.Action" : "action:"
     }
 
   },
@@ -14,5 +15,8 @@
     "Red" : "path:red/type:int",
     "Green" : "path:green/type:int",
     "Blue" : "path:blue/type:int"
+  },
+  "Actions" : {
+
   }
 }

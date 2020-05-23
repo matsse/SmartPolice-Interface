@@ -119,8 +119,8 @@ func (D *Device) SaveDevice() {
 	}
 	
 	
-	var s string = fmt.Sprintf("./Devices/Device-%s-%s.json", D.DeviceName, D.DeviceType )
-	
+	//var s string = fmt.Sprintf("./Devices/Device-%s-%s.json", D.DeviceName, D.DeviceType )
+	var s string = fmt.Sprintf("./Data/Devices/Device-%s-%s.json", D.DeviceName, D.DeviceType )
 	Output, err := os.Create(s)
 	
 	if err != nil {
@@ -143,6 +143,7 @@ func (D *Device) Startup() {
 			D.Source.TTN.GetData(&D.Data, D.Format)
 		
 		//D.Source.TTN.WatchFeed()
+		
 		
 	} else {
 		fmt.Println("ERROR")

@@ -34,7 +34,9 @@ func FormatScreen() {
 
 
 func LoadFormats() {
-	file, err := os.Open("./Formats/Default.json")
+	//file, err := os.Open("./Formats/Default.json")
+	file, err := os.Open("./Data/Formats/Default.json")
+	
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -57,25 +59,29 @@ func LoadFormats() {
 func (F *Format)SetFormat() {
 	var target string = ""
 	var dtype string = ""
-	fmt.Printf(`
+//	fmt.Printf(`
+//
+//	Specify the target of your data. It can be done with a key or a path
+//
+//## PATH ##
+//	To specify a path, type the key value of the the path which leads to the right key.
+//	Denote each corresponding joints in the path with a period (.)
+//
+//	Example:
+//
+//		RootValue.Child1.Child2.Child3
+//
+//
+//## KEY ##
+//	To specify the target with a key will be reduce efficiency, as the program will recursively look for the value.
+//	However, after the value is found the first time, a path will be created to reduce time/complexity.
+//
+//
+//Target#`)
+
+	fmt.Println(Utils.TargetHelp)
 	
-	Specify the target of your data. It can be done with a key or a path
-	
-## PATH ##
-	To specify a path, type the key value of the the path which leads to the right key.
-	Denote each corresponding joints in the path with a period (.)
-	
-	Example:
-		
-		RootValue.Child1.Child2.Child3
 
-
-## KEY ##
-	To specify the target with a key will be reduce efficiency, as the program will recursively look for the value.
-	However, after the value is found the first time, a path will be created to reduce time/complexity.
-
-
-Target#`)
 	fmt.Scan(&target)
 	
 	
@@ -205,6 +211,7 @@ func AnalyzeType(entry string, data map[string]interface{})( string , bool)  {
 	return "", false
 
 }
+
 
 
 

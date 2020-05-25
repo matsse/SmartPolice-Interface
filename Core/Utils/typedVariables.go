@@ -66,11 +66,13 @@ func AnalyzeAction(method string, in interface{}, typ string) interface{}{
 		x, _ := QuickConvert[arg[0]](arg[1], "string")
 		temp = append(temp, x)
 	}
-
+	
+	
 	output, err := FindFunction[len(temp)](temp, functionName)
 	
 	if err != nil {
-		panic("Something went wrong!")
+		return nil
+		//panic("Something went wrong!")
 	}
 	
 	

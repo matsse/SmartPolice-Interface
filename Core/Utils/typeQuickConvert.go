@@ -13,5 +13,13 @@ var QuickConvert map[string]  func( in interface{}, typ string) (interface{}, er
 		}
 		return nil, nil
 	},
-	
+	"sstring" : func(in interface{}, typ string) (interface{}, error) {
+		switch typ {
+		case "string":
+			x, _ := strconv.Atoi(in.(string))
+			return  x, nil
+			break
+		}
+		return nil, nil
+	},
 }

@@ -5,6 +5,16 @@ import (
 )
 
 var FindFunction map[int]  func( in []interface{}, name string) (interface{}, error) = map[int] func(in []interface{}, name string) (interface{}, error) {
+	1 : func( in []interface{}, name string) (interface{}, error) {
+
+		compatibility := Actions.AvailableFunctions[name].CheckCompatibility(in)
+		if compatibility != nil {
+			return nil, compatibility
+			//panic(compatibility)
+		}
+		
+		return Actions.AvailableFunctions[name].Run2Args(in[0], in[1])
+	},
 	2 : func( in []interface{}, name string) (interface{}, error) {
 		//fmt.Println(name)
 		compatibility := Actions.AvailableFunctions[name].CheckCompatibility(in)

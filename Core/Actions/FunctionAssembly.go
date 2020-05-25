@@ -57,7 +57,7 @@ func  (A ApplicationFunc) CheckTypes(data interface{}, index int) {
 
 
 func (A ApplicationFunc) CheckCompatibility(data interface{}) error{
-	
+	fmt.Println("NAME", A.Name)
 	if len(data.([]interface{})) != len(A.Args) {
 		return fmt.Errorf("The lenght of supplied args (%d) is not the same as the function (%d)\n",len(data.([]interface{})), len(A.Args) )
 	}

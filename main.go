@@ -50,7 +50,8 @@ prompt: {
 		DeviceScreen()
 		break
 	case "format":
-		CurrentDevice.Format.SetFormat()
+		tmpForm := Core.Format{}
+		tmpForm.SetFormat()
 		break
 	case "listen":
 		Core.ListenToAll()

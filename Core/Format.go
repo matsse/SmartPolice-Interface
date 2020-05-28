@@ -56,67 +56,92 @@ func LoadFormats() {
 
 
 
-func (F *Format)SetFormat() {
+func (F Format)SetFormat() {
 	var target string = ""
 	var dtype string = ""
-//	fmt.Printf(`
-//
-//	Specify the target of your data. It can be done with a key or a path
-//
-//## PATH ##
-//	To specify a path, type the key value of the the path which leads to the right key.
-//	Denote each corresponding joints in the path with a period (.)
-//
-//	Example:
-//
-//		RootValue.Child1.Child2.Child3
-//
-//
-//## KEY ##
-//	To specify the target with a key will be reduce efficiency, as the program will recursively look for the value.
-//	However, after the value is found the first time, a path will be created to reduce time/complexity.
-//
-//
-//Target#`)
-
-	fmt.Println(Utils.TargetHelp)
+	var dName string = ""
+	var AddAct string = ""
+	var AddT string = ""
+	var Action string = ""
+	var ActArg string = ""
 	
-
+	// Sets name of the format
+	fmt.Printf(Utils.FormatName)
+	fmt.Printf(Utils.FmtNamePS)
+	fmt.Scan(&dName)
+	
+	if dName == "" {
+		panic("Bad Name")
+	}
+	
+	F[dName] = map[string] interface{}{
+		"Target" : map[string] interface{}{},
+		"Actions" : map[string] interface{}{},
+	}
+	
+	
+	EntryPrompt:
+	// Sets the Target of the format
+	fmt.Printf(Utils.TargetHelp)
+	fmt.Printf(Utils.TargetPS)
 	fmt.Scan(&target)
 	
 	
-	
-	fmt.Printf(`
-	
-	Specify the type of your targetted data
-	
-
-	To specify the data type of your data entry, you can use the following options:
-	
-	## Primitives ##
-	
-		int = type:int
-		uint16 = type:uint16
-		float32 = type:float32
-		float64 = type:float64
-		string = type:string
-		date = type:date
-		interface = type:interface
-
-	## Arrays ##
-	
-		int = type:[]int
-		uint = type:[]uint16
-		float32 = type:[]float32
-		float64 = type:[]float64
-		string = type:[]string
-		interface = type:[]interface
-
-Target#`)
+	// Sets the type of the target
+	fmt.Printf(Utils.TypeHelp)
+	fmt.Printf(Utils.TypePS)
 	fmt.Scan(&dtype)
+	
+	// Asks if actions are required
+	fmt.Printf(Utils.ActionsScreen)
+	fmt.Printf(Utils.AddActionPS)
+	fmt.Scan(&AddAct)
+	
+	if AddAct != "yes" && AddAct == "no" {
+		goto AddMore
+	}
+	
+	
+	
+	// Sets the actions for target
+	fmt.Printf(Utils.ActionsMain)
+	PromptAction:
+		fmt.Printf(Utils.ActionsPS)
+		fmt.Scan( &Action)
+		fmt.Println(Action, ActArg)
+		if ActArg != "" {
+			Action = fmt.Sprintf("%s %s", Action, ActArg)
+		}
+	
+		if Utils.CheckActionsHelp(Action) == false {
+			goto PromptAction
+		} else {
+		
+		}
+	
+	
+	
+	
+	
+	AddMore:
+	fmt.Printf(Utils.AddMore)
+	fmt.Printf(Utils.AdditonalT)
+	fmt.Scan(&AddT)
+	
+	if AddT == "yes" {
+		goto EntryPrompt
+	} else {
+	
+	}
+	
+	
+
 	
 	
 	fmt.Printf("%s/%s\n", target, dtype)
+	
+	
+	
 	
 	
 	fmt.Println()

@@ -14,7 +14,7 @@ import (
 var (
 	isTTN bool = false
 )
-
+var  TestingLock int = 0
 
 var Devices []Device
 
@@ -88,8 +88,10 @@ Device-Type# `)
 	
 	Devices = append(Devices, *D)
 	
-	
-	D.SaveDevice()
+	if TestingLock == 0 {
+		D.SaveDevice()
+		
+	}
 }
 
 

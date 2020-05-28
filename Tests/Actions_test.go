@@ -178,14 +178,7 @@ func TestHCTypes(t *testing.T) {
 func Test4Input(t *testing.T) {
 	fmt.Printf("\n\n\nDecryption Testing\n")
 	
-	//var x  = map[string] interface{}{
-	//	"Temperature" :             "key:temperature/type:float64",
-	//	"Temperature.Action" :      "action:DecryptAES(self#,ref#)",
-	//	"key" : "12345678901234567890123456789012",
-	//	"iv" : "1234567890123456",
-	//	"blocksize" : 128,
-	//}
-	
+
 	Utils.GlobalTemp = map[string] interface{}{
 		"Temperature" :             "key:temperature/type:string",
 		"Temperature.Action" :      "action:DecryptAES(self#,sref#key,sref#iv,sref#blocksize)",

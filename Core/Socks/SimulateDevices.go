@@ -116,23 +116,34 @@ func (D *DeviceList) RandomValues() {
 
 
 func (D *DeviceList) SendData (wg *sync.WaitGroup) {
-	time.Sleep(time.Second * 3)
+	defer wg.Done()
+	
+	time.Sleep(time.Second * 10)
 	
 	tcpAddr, err := net.ResolveTCPAddr("tcp4", "127.0.0.1:1201")
 	checkError(err)
 	conn, err := net.DialTCP("tcp", nil, tcpAddr)
 	checkError(err)
 	var Success []int
-	
-	for len(Success) < 20 {
-		bytes, _ := json.MarshalIndent(D.Data[D.Name].(map[string]interface{})["Data"], "", "\t")
+	defer conn.Close()
+	bytes, _ := json.MarshalIndent(D.Data[D.Name].(map[string]interface{})["Data"], "", "\t")
+	for len(Success) < 1  {
+		
+		
 		
 		_, err := conn.Write(bytes)
+		conn.CloseWrite()
+		
 		//fmt.Println(len(Success))
 		if err != nil {
-			panic(32)
+			//panic(err)
+			continue
 		}
+		conn.Write([]byte("EOC"))
+		
+		
 		Success = append(Success, 1)
+		time.Sleep(time.Second * 1)
 	}
 	
 }

@@ -98,9 +98,9 @@ func String_Validation(value interface{}) bool {
 	
 }
 func Bool_Validation(value interface{}) bool {
-	tmp := uint8(value.(float64))
-	myType := reflect.TypeOf(tmp)
-	if k := myType.Kind(); k == reflect.Uint8 {
+
+	myType := reflect.TypeOf(value)
+	if k := myType.Kind(); k == reflect.Bool {
 		return true
 	}
 	return false

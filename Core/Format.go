@@ -50,7 +50,7 @@ func LoadFormats() {
 	json2.Unmarshal(formats, &Formats)
 	
 	
-	fmt.Println(Formats)
+	//fmt.Println(Formats)
 	
 }
 
@@ -162,9 +162,11 @@ func AnalyzeFormat(entry string, data map[string]interface{}) (interface{},  boo
 		}
 	} else if query[0] == "path" {
 		
+		
 		if value, result := PathSearch(query[1], data); result == true {
 			return value, true
 		}
+		
 	}
 	
 	return nil, false
@@ -175,6 +177,7 @@ func AnalyzeFormat(entry string, data map[string]interface{}) (interface{},  boo
 
 func AnalyzeType(entry string, data map[string]interface{})( string , bool)  {
 	
+
 	format  := strings.Split(entry, "/")
 	
 	query := strings.Split(format[0], ":")
@@ -198,11 +201,14 @@ func AnalyzeType(entry string, data map[string]interface{})( string , bool)  {
 	
 	
 	
-	//fmt.Println(query[1], temp)
+	
 	
 	switch dataType[1] {
 	case "string":
 		return dataType[1],  Utils.String_Validation(temp)
+		break
+	case "bool":
+		return dataType[1],  Utils.Bool_Validation(temp)
 		break
 	case "int":
 		return dataType[1], Utils.Integer_validation(temp)
@@ -245,6 +251,9 @@ func AnalyzeType(entry string, data map[string]interface{})( string , bool)  {
 
 func PathSearch(formats string , data map[string]interface{}) (interface{}, bool)  {
 	path := strings.Split(formats, ".")
+	if len(path) == 1 {
+		return KeySearch(formats, data)
+	}
 	var value interface{}
 	tData := data
 	

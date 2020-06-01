@@ -146,8 +146,8 @@ func (D *DeviceList) Authentication (conn net.Conn) bool  {
 func (D *DeviceList) SendData (dg *sync.WaitGroup) {
 	defer dg.Done()
 	
-	
-	time.Sleep(time.Second * 1)
+	time.Sleep(time.Millisecond * time.Duration(Utils.RandInt(3000,     10000)))
+	//time.Sleep(time.Second * 1)
 	
 
 	

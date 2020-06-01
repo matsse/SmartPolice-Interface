@@ -45,7 +45,7 @@ var dg sync.WaitGroup
 var TestType string = ""
 var run_count = 1
 var counter uint64
-var TotalRuns int = 2000
+var TotalRuns int = 1000
 var TestMode = ""
 
 
@@ -89,6 +89,7 @@ func Test_32(t *testing.T) {
 		Socks.Simulator[i].New()
 		Socks.Simulator[i].RandomValues()
 		
+		
 		go Socks.Simulator[i].SendData(&dg)
 	}
 	dg.Wait()
@@ -111,7 +112,12 @@ func Test_32(t *testing.T) {
 		run_count++
 		goto resend
 	} else {
-	//log.Println("Total number of bytes", counter, "written in ", elapsed)
+		if TestMode == "Time" {
+			Average_time()
+		} else if TestMode == "Loss" {
+			Average_Loss()
+		}
+
 	}
 }
 
@@ -263,7 +269,7 @@ func Calculate_differences() {
 	
 	
 	if TestMode ==  "Time" {
-		fmt.Printf("Test %d recieved %d bytes and took %s to complete\n", run_count, currentTest.ServerBytes, currentTest.ServerTime)
+		fmt.Printf("Test %d recieved %d bytes and took %s to complete\n", run_count, currentTest.ServerBytes, currentTest.ServerTime )
 	} else if TestMode == "Loss" {
 		currentTest.SizeDiff = currentTest.DeviceBytes - currentTest.ServerBytes
 		currentTest.SizePercent = 100.0 * (float64(currentTest.SizeDiff) / float64(currentTest.DeviceBytes))
@@ -271,6 +277,25 @@ func Calculate_differences() {
 		fmt.Println("Device bytes ", currentTest.DeviceBytes, " Server bytes ", currentTest.ServerBytes)
 	}
 
+}
+func Average_time() {
+	var time3 time.Duration
+	for i := range TestResults {
+		time3 += TestResults[i].ServerTime
+	}
+	test  := time3.Microseconds() / int64(len(TestResults))
+	fmt.Printf("The average time to execute the program with %d rounds are %v \n", TotalRuns, time.Duration(test) )
+	
+}
+
+func Average_Loss() {
+	var Loss3 float64
+	for i := range TestResults {
+		Loss3 += TestResults[i].SizePercent
+	}
+	test :=  Loss3 / float64(len(TestResults))
+	fmt.Printf("The average loss experienced over %d is approximately %f%% \n", TotalRuns, test)
+	
 }
 
 

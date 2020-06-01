@@ -114,9 +114,10 @@ func (F Format)SetFormat() {
 		}
 	
 		if Utils.CheckActionsHelp(Action) == false {
+			fmt.Println(false)
 			goto PromptAction
 		} else {
-		
+		 goto  AddMore
 		}
 	
 	
@@ -139,7 +140,7 @@ func (F Format)SetFormat() {
 	
 	
 	fmt.Printf("%s/%s\n", target, dtype)
-	
+	fmt.Println(Action)
 	
 	
 	
@@ -242,10 +243,6 @@ func AnalyzeType(entry string, data map[string]interface{})( string , bool)  {
 	return "", false
 
 }
-
-
-
-
 
 
 

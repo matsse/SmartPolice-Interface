@@ -25,6 +25,7 @@ func CheckActionsHelp(Action string) bool{
 	default:
 		fmt.Println("Validating actions")
 		ValidateActions(Action)
+		return true
 		}
 		
 		return false
@@ -71,10 +72,6 @@ func ChainsValid(chain []string) bool{
 			return false
 		}
 	}
-	
-	
-	
-	
 	return true
 }
 
@@ -84,7 +81,7 @@ func ActionValid(action string) bool{
 	
 	OpenParaen := strings.Split(action, "(")
 	if Actions.AvailableFunctions[OpenParaen[0]].Name == ""  {
-		log.Println("Action not found!")
+		log.Println("Action not found!", OpenParaen[0])
 		return false
 	}
 	// self#,sref#key,sref#iv,sref#blocksize)
@@ -101,22 +98,15 @@ func ActionValid(action string) bool{
 	
 	for i := range args {
 		arg := strings.Split(rest[i], "#")
-		fmt.Println(rest)
+		//fmt.Println(rest)
+		if  arg[0] == "" {continue}
 		if Actions.AvailableFunctions[OpenParaen[0]].Args[i] != arg[0] {
-			fmt.Println(arg[0])
+			//fmt.Println(arg[0])
 			log.Println("Argument mismatch!")
 			return false
 		}
 		
 	}
-	
-	
-	
-
-	
-	
-	
-	
 	
 	return true
 }

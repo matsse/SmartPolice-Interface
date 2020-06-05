@@ -1,0 +1,40 @@
+{
+
+  "ArduinoTemp" : {
+    "Target": {
+      "Temperature" : "path:temperature/type:int",
+      "Humidity" : "path:humidity/type:int"
+    },
+    "Actions" : {
+      "Temperature.Action" : "action:",
+      "Humidity.Action" : "action:"
+    }
+
+  },
+  "GH-Hue" : {
+    "Target" : {
+      "Red" : "path:red/type:int",
+      "Green" : "path:green/type:int",
+      "Blue" : "path:blue/type:int"
+    },
+    "Actions" : {}
+
+  },
+  "Secu-Lock" : {
+    "Target" : {
+      "1" : "path:1/type:int",
+      "2" : "path:2/type:int",
+      "3" : "path:3/type:int",
+      "4" : "path:4/type:int"
+    },
+    "Actions" : {}
+
+  },
+  "LightSwitch" : {
+    "Target" : {
+      "On" : "path:on/type:bool"
+    },
+    "Actions" : {}
+
+  }
+}

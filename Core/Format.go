@@ -215,7 +215,6 @@ func AnalyzeType(entry string, data map[string]interface{})( string , bool)  {
 		return dataType[1], Utils.Integer_validation(temp)
 		break
 	case "int8":
-		//fmt.Println(int8(temp.(float64)))
 		return dataType[1], Utils.Integer8_validation(temp)
 		break
 	case "int16":

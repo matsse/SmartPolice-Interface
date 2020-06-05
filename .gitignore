@@ -1,3 +1,2 @@
 *.exe
-*.json
-Protocols/Zigbee.go
+Device-*.json

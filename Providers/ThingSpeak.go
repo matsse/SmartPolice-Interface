@@ -8,10 +8,10 @@ import (
 )
 
 type TS_info struct {
-	DevID               string                          `json:"devID,omitempty"`
-	ChannelID           string                          `json:"channelID,omitempty"`
-	URL                 string                          `json:"url,omitempty"`
-	Author              string                          `json:"author,omitempty"`
+	DevID               string     `json:"devID,omitempty"`
+	ChannelID           string     `json:"channelID,omitempty"`
+	URL                 string     `json:"url,omitempty"`
+	Author              string     `json:"author,omitempty"`
 }
 
 

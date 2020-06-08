@@ -1,5 +1,5 @@
 *.exe
-#Device-*.json
-Devices
+# Device-*.json
+Devices/Device-*.json
 Screenshots
 .idea

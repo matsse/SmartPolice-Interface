@@ -20,16 +20,7 @@ var Formats map[string] interface{}
 
 type Format  map[string] interface{}
 
-//
-//type Format struct {
-//	Entries map[string] interface{}     `json:"entries"`
-//}
 
-
-
-func FormatScreen() {
-
-}
 
 
 
@@ -46,11 +37,7 @@ func LoadFormats() {
 		log.Fatal(err)
 	}
 	
-	
 	json2.Unmarshal(formats, &Formats)
-	
-	
-	//fmt.Println(Formats)
 	
 }
 
@@ -120,10 +107,7 @@ func (F Format)SetFormat() {
 		 goto  AddMore
 		}
 	
-	
-	
-	
-	
+		
 	AddMore:
 	fmt.Printf(Utils.AddMore)
 	fmt.Printf(Utils.AdditonalT)
@@ -136,14 +120,8 @@ func (F Format)SetFormat() {
 	}
 	
 	
-
-	
-	
 	fmt.Printf("%s/%s\n", target, dtype)
 	fmt.Println(Action)
-	
-	
-	
 	
 	fmt.Println()
 	time.Sleep(time.Second * 10 )
@@ -266,7 +244,6 @@ func PathSearch(formats string , data map[string]interface{}) (interface{}, bool
 	}
 	return nil, false
 }
-
 
 
 func KeySearch(formats string , data map[string]interface{}) (interface{}, bool) {

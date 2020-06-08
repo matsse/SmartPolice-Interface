@@ -83,10 +83,6 @@ func (T *TTN_Info) NewDevice() {
 	fmt.Scan(  &test2[0], &test2[1], &test2[2], &test2[3], &test2[4], &test2[5], &test2[6], &test2[7])
 	T.dev.DevEUI = types.DevEUI{ test2[0], test2[1], test2[2], test2[3], test2[4], test2[5], test2[6], test2[7]}
 	T.DevEUID = test2
-	//  0x70 0xB3 0xD5 0x7E 0xD0 0x02 0xD9 0xFA
-	//dev.AppEUI = types.AppEUI{ 0x70, 0xB3, 0xD5, 0x7E, 0xD0, 0x02, 0xD9, 0xFA }
-	//fmt.Println(dev.AppEUI.Bytes())
-	
 	
 	T.dev, err = devices.Get(T.DevID)
 	if err != nil {
@@ -203,28 +199,10 @@ func (T *TTN_Info) GetData(tmp *map[string]interface{}, fmts map[string]interfac
 			}
 			
 			for _, key := range fmts[fm].([]interface{}) {
-
-				//fmt.Println(fmts[fm].([]interface{})[entry])
 				(*tmp)[key.(string)] = container[key.(string)]
-				
-				//fmt.Println((*tmp))
-				//fmt.Println(container[key.(string)])
 			}
-			
-			
-			
-			//(*tmp)[fm] = container[fm]
+
 		}
-		
-		
-		
-	
-		
-		
-		//stringPayload := string(message.PayloadRaw)
-		//fmt.Println(stringPayload)
-		//log.WithField("data", stringPayload).Infof("%s: received uplink", T.AppID)
-		
 	}
 	
 }

@@ -90,7 +90,6 @@ Device-Type# `)
 	
 	if TestingLock == 0 {
 		D.SaveDevice()
-		
 	}
 }
 

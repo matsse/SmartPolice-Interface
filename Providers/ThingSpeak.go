@@ -42,8 +42,4 @@ func (T *TS_info) NewDevice() {
 	
 	
 	fmt.Println(string(x))
-	
-	
-	
-	
 }

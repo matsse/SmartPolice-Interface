@@ -4,7 +4,7 @@ Internet-of-Things devices.
 
 
 
-# Currently  this repository is set to private for the time being. The following guide is not applicable for now. 
+
 
 ## Requirements
 The main requirement needed to install this program is to have go installed. 
